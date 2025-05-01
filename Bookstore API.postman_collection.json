@@ -1,0 +1,838 @@
+{
+	"info": {
+		"_postman_id": "7a760e02-4cf1-4842-860c-a1df2204c3bc",
+		"name": "Bookstore API",
+		"description": "A collection of requests for testing the Bookstore RESTful API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38443780"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books"
+							]
+						},
+						"description": "Get all books in the bookstore."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books",
+								"1"
+							]
+						},
+						"description": "Get a book by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"The Hobbit\",\n    \"authorId\": 1,\n    \"isbn\": \"978-0-395-07122-9\",\n    \"publicationYear\": 1937,\n    \"price\": 12.99,\n    \"stock\": 50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books"
+							]
+						},
+						"description": "Create a new book."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Book - Invalid Author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"The Hobbit\",\n    \"authorId\": 999,\n    \"isbn\": \"978-0-395-07122-9\",\n    \"publicationYear\": 1937,\n    \"price\": 12.99,\n    \"stock\": 50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books"
+							]
+						},
+						"description": "Attempt to create a book with a non-existent author ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Book - Future Publication Year",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"The Hobbit\",\n    \"authorId\": 1,\n    \"isbn\": \"978-0-395-07122-9\",\n    \"publicationYear\": 2030,\n    \"price\": 12.99,\n    \"stock\": 50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books"
+							]
+						},
+						"description": "Attempt to create a book with a future publication year."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Harry Potter and the Chamber of Secrets\",\n    \"authorId\": 1,\n    \"isbn\": \"978-0-7475-3269-9\",\n    \"publicationYear\": 1998,\n    \"price\": 10.99,\n    \"stock\": 75\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books",
+								"1"
+							]
+						},
+						"description": "Update an existing book."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/books/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"books",
+								"3"
+							]
+						},
+						"description": "Delete a book by its ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for managing books."
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get All Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors"
+							]
+						},
+						"description": "Get all authors in the bookstore."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Author by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors",
+								"1"
+							]
+						},
+						"description": "Get an author by their ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Author Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors/1/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors",
+								"1",
+								"books"
+							]
+						},
+						"description": "Get all books by an author."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"J.R.R. Tolkien\",\n    \"biography\": \"English writer, poet, philologist, and academic.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors"
+							]
+						},
+						"description": "Create a new author."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"J.K. Rowling\",\n    \"biography\": \"British author best known for the Harry Potter fantasy series.\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors",
+								"1"
+							]
+						},
+						"description": "Update an existing author."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/authors/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"authors",
+								"3"
+							]
+						},
+						"description": "Delete an author by their ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for managing authors."
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers"
+							]
+						},
+						"description": "Get all customers in the bookstore."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1"
+							]
+						},
+						"description": "Get a customer by their ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Alice Johnson\",\n    \"email\": \"alice@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers"
+							]
+						},
+						"description": "Create a new customer."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe Updated\",\n    \"email\": \"john.updated@example.com\",\n    \"password\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1"
+							]
+						},
+						"description": "Update an existing customer."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"3"
+							]
+						},
+						"description": "Delete a customer by their ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for managing customers."
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Get Customer Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"cart"
+							]
+						},
+						"description": "Get a customer's shopping cart."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item to Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": 1,\n    \"quantity\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/cart/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"cart",
+								"items"
+							]
+						},
+						"description": "Add an item to a customer's shopping cart."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/cart/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"cart",
+								"items",
+								"1"
+							]
+						},
+						"description": "Update the quantity of an item in a customer's shopping cart."
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Cart Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/cart/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"cart",
+								"items",
+								"1"
+							]
+						},
+						"description": "Remove an item from a customer's shopping cart."
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for managing shopping carts."
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"orders"
+							]
+						},
+						"description": "Create an order from a customer's shopping cart."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"orders"
+							]
+						},
+						"description": "Get all orders for a customer."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"orders",
+								"1"
+							]
+						},
+						"description": "Get a specific order for a customer."
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for managing orders."
+		},
+		{
+			"name": "Error Testing",
+			"item": [
+				{
+					"name": "Invalid Email Format",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Invalid Email User\",\n    \"email\": \"not-an-email\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers"
+							]
+						},
+						"description": "Test validation for invalid email format."
+					},
+					"response": []
+				},
+				{
+					"name": "Short Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Short Password User\",\n    \"email\": \"user@example.com\",\n    \"password\": \"pass\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers"
+							]
+						},
+						"description": "Test validation for password too short."
+					},
+					"response": []
+				},
+				{
+					"name": "Out of Stock Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": 1,\n    \"quantity\": 1000\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/1/cart/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"1",
+								"cart",
+								"items"
+							]
+						},
+						"description": "Test out of stock exception."
+					},
+					"response": []
+				},
+				{
+					"name": "Empty Cart Order Creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/BookstoreAPI/api/customers/2/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BookstoreAPI",
+								"api",
+								"customers",
+								"2",
+								"orders"
+							]
+						},
+						"description": "Test creating an order with an empty cart."
+					},
+					"response": []
+				}
+			],
+			"description": "Tests for various error conditions."
+		}
+	]
+}
